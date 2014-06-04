@@ -1,0 +1,63 @@
+<div class="col-xs-2" style="margin-top: 50px">
+    <form>
+        <p><button id="login" class="btn btn-danger form-control" type="button" ng-click="iHealthLogin()" ng-show="!isAuthenticated">Login to iHealth</button></p>
+
+        <div ng-show="isAuthenticated">
+            <p><button id="signOut" class="btn btn-primary form-control" type="button" ng-click="signOut()">Sign out from iHealth</button></p>
+
+            <div class="radio">
+                <label>
+                    <input type="radio" value="userType" name="optionsRadios" ng-model="dataType" ng-change="changeDataType()">
+                    User Data
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" value="appType" name="optionsRadios" ng-model="dataType" ng-change="changeDataType()">
+                    App Data
+                </label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-xs-10">
+    <h2>BP Data</h2>
+
+    <strong>BPUnit:</strong> {{data.BPUnit}} <br>
+    <strong>CurrentRecordCount:</strong> {{data.CurrentRecordCount}} <br>
+    <strong>PageNumber:</strong> {{data.PageNumber}}<br>
+    <strong>RecordCount:</strong> {{data.RecordCount}}<br>
+
+    <table class="table" style="margin-top: 30px">
+        <tr>
+            <th>BPL</th>
+            <th>HP</th>
+            <th>HR</th>
+            <th>IsArr</th>
+            <th>LP</th>
+            <th>LastChangeTime</th>
+            <th>Lat</th>
+            <th>Lon</th>
+            <th>MDate</th>
+            <th>UserID</th>
+            <th>Note</th>
+            <th>DataID</th>
+        </tr>
+
+        <tr ng-repeat="item in data.BPDataList">
+            <td>{{item.BPL}}</td>
+            <td>{{item.HP}}</td>
+            <td>{{item.HR}}</td>
+            <td>{{item.IsArr}}</td>
+            <td>{{item.LP}}</td>
+            <td>{{item.LastChangeTime | date: 'shortDate'}}</td>
+            <td>{{item.Lat}}</td>
+            <td>{{item.Lon}}</td>
+            <td>{{item.MDate | date: 'shortDate'}}</td>
+            <td>{{item.userid}}</td>
+            <td>{{item.Note}}</td>
+            <td>{{item.DataID}}</td>
+        </tr>
+    </table>
+</div>
